@@ -7,11 +7,11 @@ class StringCalculator {
     public int add(String input) {
         if(input.isEmpty())
         	return 0;
-        else if(input.contains(",")) {
-        	String[] tokens = input.split(",");
+        else {
+        	String[] tokens = input.split(",|\n");
         	List<String> tokenslist = Arrays.asList(tokens);
         	return tokenslist.stream().mapToInt(token -> Integer.parseInt(token)).sum();
-        } else 
-        	return Integer.parseInt(input);
+        } //else 
+        	//return Integer.parseInt(input);
     }
 }
