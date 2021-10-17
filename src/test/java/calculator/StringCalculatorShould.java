@@ -24,4 +24,9 @@ class StringCalculatorShould {
         assertEquals(3, stringCalculator.add("1,2"));
     }
     
+    @Test
+    void string_with_multiple_numbers_delimited_by_comma_should_return_sum_as_int() {
+        StringCalculator stringCalculator = new StringCalculator();
+        assertEquals(6, stringCalculator.add("1,2,3"));
+    }
 }

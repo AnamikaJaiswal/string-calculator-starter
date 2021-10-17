@@ -1,5 +1,7 @@
 package calculator;
 
+import java.util.*;
+
 class StringCalculator {
 
     public int add(String input) {
@@ -7,9 +9,9 @@ class StringCalculator {
         	return 0;
         else if(input.contains(",")) {
         	String[] tokens = input.split(",");
-        	return Integer.parseInt(tokens[0]) + Integer.parseInt(tokens[1]);
+        	List<String> tokenslist = Arrays.asList(tokens);
+        	return tokenslist.stream().mapToInt(token -> Integer.parseInt(token)).sum();
         } else 
         	return Integer.parseInt(input);
     }
-
 }
