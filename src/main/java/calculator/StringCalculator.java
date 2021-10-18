@@ -2,6 +2,7 @@ package calculator;
 
 import java.util.*;
 import java.util.regex.*;
+import java.util.stream.Collectors;
 
 class StringCalculator {
 
@@ -11,7 +12,11 @@ class StringCalculator {
         else {
         	String[] tokens = tokenize(input);
         	List<String> tokenslist = Arrays.asList(tokens);
-        	return tokenslist.stream().mapToInt(token -> Integer.parseInt(token)).sum();
+        	List<Integer> negatives = tokenslist.stream().map(token -> Integer.parseInt(token)).filter(token -> token<0).collect(Collectors.toList());
+        	if(negatives.size()>0)
+        		throw new RuntimeException("negatives not allowed: "+ negatives.stream().map(n -> String.valueOf(n)).collect(Collectors.joining(" ")));
+        	else
+        		return tokenslist.stream().mapToInt(token -> Integer.parseInt(token)).sum();
         } 
     }
     

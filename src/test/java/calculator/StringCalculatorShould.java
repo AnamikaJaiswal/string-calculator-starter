@@ -47,4 +47,17 @@ class StringCalculatorShould {
         StringCalculator stringCalculator = new StringCalculator();
         assertEquals(3, stringCalculator.add("//.\n1.2"));
     }
+    
+    @Test
+    void string_with_negative_numbers_should_raise_exception() {
+    	try {
+    		StringCalculator stringCalculator = new StringCalculator();
+            stringCalculator.add("-1,-2,3");
+            fail("Exception expected.");
+    	} 
+    	catch(RuntimeException ex){
+    		assertEquals("negatives not allowed: -1 -2", ex.getMessage());    		
+    	}        
+    }
+    
 }
