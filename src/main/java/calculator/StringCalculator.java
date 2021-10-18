@@ -16,7 +16,7 @@ class StringCalculator {
         	if(negatives.size()>0)
         		throw new RuntimeException("negatives not allowed: "+ negatives.stream().map(n -> String.valueOf(n)).collect(Collectors.joining(" ")));
         	else
-        		return tokenslist.stream().mapToInt(token -> Integer.parseInt(token)).sum();
+        		return tokenslist.stream().filter(token -> Integer.parseInt(token)<=1000).mapToInt(token -> Integer.parseInt(token)).sum();
         } 
     }
     
